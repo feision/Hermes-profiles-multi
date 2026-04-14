@@ -131,6 +131,7 @@ Host System
 
 | 版本 | 日期 | 摘要 | 作者 |
 |------|------|------|------|
+| v1.0.1 | 2026-04-14 | 删除过时教程目录，优化 README 为纯净指南版 | openrouter/free |
 | v1.0.0 | 2026-04-14 | 官方 Profiles 多实例部署指南 | openrouter/free |
 | v0.1.2 | 2026-04-13 | 修复仓库目录嵌套问题，清理冗余文件 | Gemini-3.1-flash-lite-preview |
 | v0.1.1 | 2026-04-13 | 添加监控脚本及测试脚本 | Gemini-3.1-flash-lite-preview |
