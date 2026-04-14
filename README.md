@@ -1,56 +1,59 @@
-# Hermes Agent Profiles
+# Hermes Agent Profiles (多实例配置文件)
 
-Run multiple independent Hermes agents on the same machine — each with its own config, API keys, memory, sessions, skills, and gateway.
+在同一台机器上运行多个独立的 Hermes agent —— 每个实例拥有独立的配置、API 密钥、记忆、会话、技能和网关。
 
-## What are profiles?
+## 什么是 Profiles？
 
-A profile is a fully isolated Hermes environment. Each profile gets its own directory containing its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database. Profiles let you run separate agents for different purposes — a coding assistant, a personal bot, a research agent — without any cross-contamination.
+Profile 是一个完全隔离的 Hermes 环境。每个 Profile 都有自己的独立目录，包含其专属的 `config.yaml`、`.env`、`SOUL.md`、记忆 (memories)、会话 (sessions)、技能 (skills)、定时任务 (cron jobs) 和状态数据库 (state database)。
 
-When you create a profile, it automatically becomes its own command. Create a profile called `coder` and you immediately have `coder chat`, `coder setup`, `coder gateway start`, etc.
+通过 Profiles，您可以为不同的用途运行不同的 Agent（例如：一个编程助手、一个个人机器人、一个研究 Agent），而无需担心任何数据交叉污染。
 
-## Quick Start
+当您创建 Profile 时，它会自动成为一个独立的命令。例如，创建名为 `coder` 的 Profile 后，您可以直接使用 `coder chat`、`coder setup`、`coder gateway start` 等命令。
+
+## 快速上手
 
 ```bash
-hermes profile create coder # creates profile + "coder" command alias
-coder setup                  # configure API keys and model
-coder chat                   # start chatting
+hermes profile create coder # 创建 profile 并生成 "coder" 命令别名
+coder setup                  # 配置 API 密钥和模型
+coder chat                   # 开始对话
 ```
 
-That's it. `coder` is now a fully independent agent. It has its own config, its own memory, its own everything.
+就这么简单。`coder` 现在是一个完全独立的 Agent，拥有自己的配置、记忆和所有资源。
 
-## Creating a Profile
+## 创建 Profile
 
-### Blank Profile
+### 空白 Profile (Blank Profile)
 ```bash
 hermes profile create mybot
 ```
-Creates a fresh profile with bundled skills seeded. Run `mybot setup` to configure API keys, model, and gateway tokens.
+创建一个带有预设基础技能的全新 Profile。运行 `mybot setup` 来配置 API 密钥、模型和网关 Token。
 
-### Clone Config Only (`--clone`)
+### 仅克隆配置 (`--clone`)
 ```bash
 hermes profile create work --clone
 ```
-Copies your current profile's `config.yaml`, `.env`, and `SOUL.md` into the new profile. Same API keys and model, but fresh sessions and memory. Edit `~/.hermes/profiles/work/.env` for different API keys, or `~/.hermes/profiles/work/SOUL.md` for a different personality.
+将当前 Profile 的 `config.yaml`、`.env` 和 `SOUL.md` 复制到新 Profile 中。这意味着使用相同的 API 密钥和模型，但拥有全新的会话记录和记忆。您可以编辑 `~/.hermes/profiles/work/.env` 来更改 API 密钥，或编辑 `~/.hermes/profiles/work/SOUL.md` 来更改人格定义。
 
-### Clone Everything (`--clone-all`)
+### 全量克隆 (`--clone-all`)
 ```bash
 hermes profile create backup --clone-all
 ```
-Copies **everything** — config, API keys, personality, all memories, full session history, skills, cron jobs, plugins. A complete snapshot. Useful for backups or forking an agent that already has context.
+复制 **所有内容** —— 包括配置、API 密钥、人格定义、所有记忆、完整会话历史、技能、定时任务和插件。这是一个完整的快照，适用于备份或基于已有上下文的 Agent 进行分支开发。
 
-### Clone from a Specific Profile
+### 从特定 Profile 克隆
 ```bash
 hermes profile create work --clone --clone-from coder
 ```
 
 ---
 
-## Version History
+## 版本历史
 
-| Version | Date | Summary | Author |
+| 版本 | 日期 | 摘要 | 作者 |
 |------|------|------|------|
-| v1.0.2 | 2026-04-14 | Strict alignment with official documentation (Profiles guide) | openrouter/free |
-| v1.0.1 | 2026-04-14 | Removed outdated tutorials, optimized for pure guide | openrouter/free |
-| v1.0.0 | 2026-04-14 | Initial official Profiles deployment guide | openrouter/free |
+| v1.0.3 | 2026-04-14 | 将文档更新为中文版，严格对齐官方指南 | openrouter/free |
+| v1.0.2 | 2026-04-14 | 严格对齐官方文档 (Profiles guide) | openrouter/free |
+| v1.0.1 | 2026-04-14 | 删除过时教程目录，优化 README 为纯净指南版 | openrouter/free |
+| v1.0.0 | 2026-04-14 | 初始官方 Profiles 部署指南 | openrouter/free |
 
-**Official Documentation**: [hermes-agent.nousresearch.com/docs/user-guide/profiles](https://hermes-agent.nousresearch.com/docs/user-guide/profiles)
+**官方文档**: [hermes-agent.nousresearch.com/docs/user-guide/profiles](https://hermes-agent.nousresearch.com/docs/user-guide/profiles)
